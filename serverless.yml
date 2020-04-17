@@ -1,0 +1,24 @@
+service: scrape-covid-usa
+
+provider:
+  name: aws
+  runtime: python3.8
+  credentials:
+      accessKeyId: ##
+      secretAccessKey: ##
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+
+functions:
+  scrape-usa:
+    handler: handler.main
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
